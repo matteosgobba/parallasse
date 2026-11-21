@@ -1,0 +1,296 @@
+{
+  "auc_contrasts": {
+    "target": {
+      "PFN-ID_minus_PFN-K": {
+        "bootstrap_95_hi": 0.002947864713333236,
+        "bootstrap_95_lo": 0.000560866143333233,
+        "mean": 0.0017866378000000276,
+        "seed_max": 0.004491404799999987,
+        "seed_min": -0.002418326599999965
+      },
+      "PFN-K_minus_XGB": {
+        "bootstrap_95_hi": 0.0022099959633332224,
+        "bootstrap_95_lo": 0.00044546676666669676,
+        "mean": 0.0013459704666666978,
+        "seed_max": 0.0030264528000000235,
+        "seed_min": -0.0005891203999999206
+      }
+    },
+    "test": {
+      "PFN-ID_minus_PFN-K": {
+        "bootstrap_95_hi": 0.01429457108333342,
+        "bootstrap_95_lo": 0.010035433541666547,
+        "mean": 0.01219316,
+        "seed_max": 0.021460814999999966,
+        "seed_min": 0.004788954999999984
+      },
+      "PFN-K_minus_XGB": {
+        "bootstrap_95_hi": -0.004151133708333385,
+        "bootstrap_95_lo": -0.007429536999999981,
+        "mean": -0.0056884783333333395,
+        "seed_max": -0.002009764999999941,
+        "seed_min": -0.010254085000000024
+      }
+    }
+  },
+  "auc_gap_pythia_minus_herwig": {
+    "MLP": {
+      "bootstrap_95_hi": 0.06822783671500006,
+      "bootstrap_95_lo": 0.057367476141666686,
+      "mean": 0.0631145648,
+      "seed_max": 0.06356138340000006,
+      "seed_min": 0.06257561959999991
+    },
+    "PFN-ID": {
+      "bootstrap_95_hi": 0.07052748172333338,
+      "bootstrap_95_lo": 0.05938747547166654,
+      "mean": 0.06523118326666662,
+      "seed_max": 0.06913458099999992,
+      "seed_min": 0.062483646999999976
+    },
+    "PFN-K": {
+      "bootstrap_95_hi": 0.06017865650666667,
+      "bootstrap_95_lo": 0.04897752898999999,
+      "mean": 0.05482466106666665,
+      "seed_max": 0.056868040200000025,
+      "seed_min": 0.05216517079999994
+    },
+    "XGB": {
+      "bootstrap_95_hi": 0.06694524018833331,
+      "bootstrap_95_lo": 0.056067715331666705,
+      "mean": 0.061859109866666685,
+      "seed_max": 0.06190425799999999,
+      "seed_min": 0.06183013540000004
+    }
+  },
+  "bootstrap": {
+    "interval": "Descriptive 2.5% and 97.5% percentiles; fixed trained models and fixed calibrated cuts. Excludes retraining and threshold-estimation uncertainty; no simultaneous-significance claim.",
+    "replicates": 500,
+    "rng": "numpy PCG64, independent child stream per cohort",
+    "sampling": "Resample rows within each class and cohort, sharing indices across models and seeds. Compute contrasts of seed-mean metrics; source and target draws are independent for the transfer interaction.",
+    "seed": 20261110
+  },
+  "class_counts": {
+    "target": {
+      "gluons": 50000,
+      "quarks": 50000
+    },
+    "test": {
+      "gluons": 10000,
+      "quarks": 10000
+    }
+  },
+  "cohort_metrics": {
+    "target": {
+      "MLP": {
+        "auc": {
+          "bootstrap_95_hi": 0.802317750665,
+          "bootstrap_95_lo": 0.7970184602883333,
+          "mean": 0.7996391718666667,
+          "seed_max": 0.8001926954,
+          "seed_min": 0.7989846516
+        },
+        "fpr": {
+          "bootstrap_95_hi": 0.1931605,
+          "bootstrap_95_lo": 0.1868365,
+          "mean": 0.18993333333333332,
+          "seed_max": 0.19198,
+          "seed_min": 0.1877
+        },
+        "tpr": {
+          "bootstrap_95_hi": 0.6450438333333334,
+          "bootstrap_95_lo": 0.6365729999999999,
+          "mean": 0.6411933333333333,
+          "seed_max": 0.64382,
+          "seed_min": 0.63632
+        }
+      },
+      "PFN-ID": {
+        "auc": {
+          "bootstrap_95_hi": 0.8059466837616667,
+          "bootstrap_95_lo": 0.8004625123900001,
+          "mean": 0.8031164000666667,
+          "seed_max": 0.804832093,
+          "seed_min": 0.8006143232
+        },
+        "fpr": {
+          "bootstrap_95_hi": 0.21388883333333333,
+          "bootstrap_95_lo": 0.2070885,
+          "mean": 0.21036,
+          "seed_max": 0.22068,
+          "seed_min": 0.20392
+        },
+        "tpr": {
+          "bootstrap_95_hi": 0.6832693333333334,
+          "bootstrap_95_lo": 0.6752935,
+          "mean": 0.6795133333333334,
+          "seed_max": 0.69184,
+          "seed_min": 0.67126
+        }
+      },
+      "PFN-K": {
+        "auc": {
+          "bootstrap_95_hi": 0.8041211670583334,
+          "bootstrap_95_lo": 0.7988158702183333,
+          "mean": 0.8013297622666666,
+          "seed_max": 0.8030326498,
+          "seed_min": 0.7994113792
+        },
+        "fpr": {
+          "bootstrap_95_hi": 0.18192033333333332,
+          "bootstrap_95_lo": 0.17571299999999998,
+          "mean": 0.17876666666666666,
+          "seed_max": 0.18058,
+          "seed_min": 0.17772
+        },
+        "tpr": {
+          "bootstrap_95_hi": 0.6413736666666666,
+          "bootstrap_95_lo": 0.633204,
+          "mean": 0.6374266666666667,
+          "seed_max": 0.64036,
+          "seed_min": 0.63424
+        }
+      },
+      "XGB": {
+        "auc": {
+          "bootstrap_95_hi": 0.802542965955,
+          "bootstrap_95_lo": 0.7973196914933334,
+          "mean": 0.7999837918,
+          "seed_max": 0.800006197,
+          "seed_min": 0.7999446788
+        },
+        "fpr": {
+          "bootstrap_95_hi": 0.1954216666666667,
+          "bootstrap_95_lo": 0.18912133333333334,
+          "mean": 0.19208,
+          "seed_max": 0.19346,
+          "seed_min": 0.19014
+        },
+        "tpr": {
+          "bootstrap_95_hi": 0.6500206666666667,
+          "bootstrap_95_lo": 0.6416430000000001,
+          "mean": 0.6461133333333334,
+          "seed_max": 0.64834,
+          "seed_min": 0.6439
+        }
+      }
+    },
+    "test": {
+      "MLP": {
+        "auc": {
+          "bootstrap_95_hi": 0.8673396638333334,
+          "bootstrap_95_lo": 0.8573297513749999,
+          "mean": 0.8627537366666665,
+          "seed_max": 0.86294686,
+          "seed_min": 0.862546035
+        },
+        "fpr": {
+          "bootstrap_95_hi": 0.11250166666666667,
+          "bootstrap_95_lo": 0.10073166666666668,
+          "mean": 0.10636666666666666,
+          "seed_max": 0.107,
+          "seed_min": 0.1059
+        },
+        "tpr": {
+          "bootstrap_95_hi": 0.6544766666666666,
+          "bootstrap_95_lo": 0.6356299999999999,
+          "mean": 0.6453333333333333,
+          "seed_max": 0.6473,
+          "seed_min": 0.6423
+        }
+      },
+      "PFN-ID": {
+        "auc": {
+          "bootstrap_95_hi": 0.87297192375,
+          "bootstrap_95_lo": 0.8631620957499999,
+          "mean": 0.8683475833333333,
+          "seed_max": 0.873037365,
+          "seed_min": 0.864689645
+        },
+        "fpr": {
+          "bootstrap_95_hi": 0.11387,
+          "bootstrap_95_lo": 0.10261583333333332,
+          "mean": 0.10813333333333332,
+          "seed_max": 0.1093,
+          "seed_min": 0.106
+        },
+        "tpr": {
+          "bootstrap_95_hi": 0.6781174999999999,
+          "bootstrap_95_lo": 0.6617583333333333,
+          "mean": 0.6703,
+          "seed_max": 0.6761,
+          "seed_min": 0.6661
+        }
+      },
+      "PFN-K": {
+        "auc": {
+          "bootstrap_95_hi": 0.860953566,
+          "bootstrap_95_lo": 0.8508337334583332,
+          "mean": 0.8561544233333334,
+          "seed_max": 0.85990069,
+          "seed_min": 0.85157655
+        },
+        "fpr": {
+          "bootstrap_95_hi": 0.11493666666666666,
+          "bootstrap_95_lo": 0.10244416666666666,
+          "mean": 0.10846666666666667,
+          "seed_max": 0.1092,
+          "seed_min": 0.1071
+        },
+        "tpr": {
+          "bootstrap_95_hi": 0.6457891666666666,
+          "bootstrap_95_lo": 0.6288133333333333,
+          "mean": 0.6376333333333334,
+          "seed_max": 0.6388,
+          "seed_min": 0.6366
+        }
+      },
+      "XGB": {
+        "auc": {
+          "bootstrap_95_hi": 0.8663173891666666,
+          "bootstrap_95_lo": 0.8565755765416667,
+          "mean": 0.8618429016666665,
+          "seed_max": 0.861910455,
+          "seed_min": 0.861787615
+        },
+        "fpr": {
+          "bootstrap_95_hi": 0.11463499999999999,
+          "bootstrap_95_lo": 0.1022825,
+          "mean": 0.10843333333333333,
+          "seed_max": 0.1093,
+          "seed_min": 0.107
+        },
+        "tpr": {
+          "bootstrap_95_hi": 0.6552016666666667,
+          "bootstrap_95_lo": 0.6367108333333333,
+          "mean": 0.6462666666666667,
+          "seed_max": 0.6495,
+          "seed_min": 0.6422
+        }
+      }
+    }
+  },
+  "cut_freeze_sha256": "6f1ac7b1efdb653f74a0f3e32af5a72a78ff45319ff71963f2a426fc8cb67e07",
+  "pid_auc_gain_pythia_minus_herwig": {
+    "bootstrap_95_hi": 0.012554248450000144,
+    "bootstrap_95_lo": 0.00810428155833334,
+    "mean": 0.010406522199999971,
+    "seed_max": 0.01696941019999998,
+    "seed_min": 0.0070428747999999874
+  },
+  "run_id": "20261110-heldout-01",
+  "score_artifacts": {
+    "target": {
+      "path": "artifacts/task0004/20261110-heldout-01/target_scores.npz",
+      "rows": 100000,
+      "sha256": "c30857a8a70a6972f1c50ba552382c30047eff6fc716c763d24197d8208dc69e",
+      "wall_seconds": 5.49635533298715
+    },
+    "test": {
+      "path": "artifacts/task0004/20261110-heldout-01/test_scores.npz",
+      "rows": 20000,
+      "sha256": "ff20c765522ea3d5b97ce278a635ffc6e8f70c81b1c93d5ff6c62674998edd49",
+      "wall_seconds": 3.4082118749793153
+    }
+  }
+}

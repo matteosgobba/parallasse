@@ -1,0 +1,38 @@
+{
+  "task": "TASK-0010",
+  "protocol_version": "0.9-feasibility-only",
+  "interpretation": "Exploratory bounded pilot; not final interval validation or reserved-event performance.",
+  "models": ["PFN-K", "PFN-ID"],
+  "seeds": [17, 29, 43],
+  "source_evaluation_run": "results/task0004/20261110-heldout-01/run.json",
+  "source_partition_record": "results/task0006/20261111-source-closure-01/response.json",
+  "source_bins": 8,
+  "fraction": 0.5,
+  "sample_size": 10000,
+  "source_replicates_per_design": 32,
+  "source_designs": ["repeated_template_common_law", "fixed_template_disjoint_pools"],
+  "sampling_seed": 2026111301,
+  "lr_cutoff": 3.841458820694124,
+  "lr_interpretation": "Candidate chi-square(1) threshold. No guarantee at nuisance boundaries or under weak identification. TASK-0013 must validate/calibrate before evaluation.",
+  "confidence_scan_nodes": 9,
+  "synthetic_replicates": 12,
+  "synthetic_variations": [0.0, 0.5, 1.0],
+  "prospective_template_rows_per_class": 25000,
+  "opened_herwig_diagnostic": "After synthetic and source execution, inspect only the old TASK-0004 target archive for exploratory geometry and Asimov profile width. Bins fixed from Pythia response before access. No new-file data or new model inference.",
+  "numerical_tolerances": {
+    "noiseless_fraction_absolute": 0.0001,
+    "noiseless_variation_absolute": 0.0001,
+    "gradient_absolute": 0.000001,
+    "optimizer_nll_agreement": 0.0001,
+    "local_rank_ratio_minimum": 0.00000001
+  },
+  "prospective_scientific_criteria": {
+    "primary_coverage_floor": 0.93,
+    "primary_median_confidence_length_maximum": 0.25,
+    "unresolved_fit_failure_rate_maximum": 0.01,
+    "repeated_control_numerical_gate": "Each declared control coverage within five null binomial Monte Carlo SE of 0.95; diagnostic, not simultaneous significance.",
+    "interpretation": "Proposed before this pilot's target diagnostics; TASK-0011 must freeze. Coverage improvement requires paired uncertainty and useful length; report bias/RMSE trade-offs. No upper coverage exclusion is needed if usefulness passes."
+  },
+  "runtime_ceiling_seconds": 240,
+  "threads": 1
+}

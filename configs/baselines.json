@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "protocol_version": "0.3-baseline-pilot",
+  "scope": "source_only_pilot_not_final_fits",
+  "train_limit": 5000,
+  "tune_limit": 1000,
+  "seed": 17,
+  "cpu_threads": 4,
+  "selection_metric": "tune_roc_auc",
+  "tie_policy": "earlier epoch or boosting round; shallower XGB depth across candidates",
+  "xgb": {
+    "max_depth_candidates": [2, 4, 6],
+    "n_estimators": 300,
+    "learning_rate": 0.05,
+    "min_child_weight": 1,
+    "subsample": 0.8,
+    "colsample_bytree": 1.0,
+    "reg_lambda": 1.0,
+    "max_bin": 256,
+    "tree_method": "hist",
+    "objective": "binary:logistic",
+    "eval_metric": "auc",
+    "early_stopping_rounds": 20
+  },
+  "mlp": {
+    "hidden_sizes": [64, 32],
+    "activation": "relu",
+    "max_epochs": 3,
+    "batch_size": 256,
+    "optimizer": "Adam",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "loss": "BCEWithLogitsLoss",
+    "scaling": "StandardScaler fit on the same 5000 source training rows only",
+    "checkpoint_selection": "highest tuning ROC-AUC across the three epochs"
+  },
+  "forbidden_cohorts": ["calibration", "test", "target"]
+}

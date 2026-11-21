@@ -1,0 +1,38 @@
+{
+  "accumulation_dtype": "float64",
+  "ambiguous_center_policy": "reject circular resultant magnitude below 1e-12",
+  "azimuth_center": "atan2(sum(z*sin(phi)), sum(z*cos(phi)))",
+  "azimuth_wrapping": "atan2(sin(delta_phi), cos(delta_phi))",
+  "known_tokens": "sorted vocabulary position + 2",
+  "learned_scaling": "none in Phase 1; aggregate scaling may be fit on train only in Phase 2",
+  "output_dtype": "float32",
+  "padding_policy": "all transformed values and tokens zero; mask encoder outputs",
+  "padding_token": 0,
+  "particle_inputs": [
+    "pt/sum_pt",
+    "y-pt_weighted_mean_y",
+    "wrapped_phi-circular_mean_phi"
+  ],
+  "pid_vocabulary": [
+    -2212,
+    -2112,
+    -321,
+    -211,
+    -13,
+    -11,
+    11,
+    13,
+    22,
+    130,
+    211,
+    321,
+    2112,
+    2212
+  ],
+  "protocol_version": "0.2-data",
+  "schema_version": 1,
+  "truncation": "none; retain all real constituents",
+  "unknown_or_identity_off_token": 1,
+  "vocabulary_fit_cohort": "train",
+  "vocabulary_fit_row_ids_sha256": "3fb3a36eeff07d3ae56f1ee8a0d13aa251992db4db1729df6c293584e989f3f6"
+}

@@ -1,0 +1,28 @@
+{
+  "access_right": "open",
+  "api_url": "https://zenodo.org/api/records/3164691",
+  "creators": [
+    "Komiske, Patrick",
+    "Metodiev, Eric",
+    "Thaler, Jesse"
+  ],
+  "doi": "10.5281/zenodo.3164691",
+  "download_and_hash_seconds": 0.169,
+  "download_url": "https://zenodo.org/api/records/3164691/files/QG_jets.npz/content",
+  "expected_rows": 100000,
+  "filename": "QG_jets.npz",
+  "generator": "pythia",
+  "license": {
+    "id": "cc-by-4.0"
+  },
+  "md5_verified": true,
+  "published_md5": "f5d052f10a79c6e8b9382637aca0ef52",
+  "record_id": "3164691",
+  "record_url": "https://zenodo.org/records/3164691",
+  "record_version": "v1",
+  "role": "source",
+  "sha256": "3f27a02eab06e8b83ccc9d25638021e6e24c9361341730961f9d560dee12c257",
+  "size_bytes": 106689379,
+  "title": "Pythia8 Quark and Gluon Jets for Energy Flow",
+  "verified_utc": "2026-11-04T07:51:55.498350+00:00"
+}

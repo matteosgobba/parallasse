@@ -1,0 +1,28 @@
+{
+  "protocol_version": "0.4-source-fits",
+  "device": "cpu",
+  "cpu_threads": 4,
+  "batch_size": 256,
+  "neural_learning_rate": 0.001,
+  "neural_weight_decay": 0.0001,
+  "neural_patience": 5,
+  "xgb_depth": 4,
+  "mlp_hidden_sizes": [64, 32],
+  "pfn_particle_hidden_sizes": [32, 32, 64],
+  "pfn_head_hidden_sizes": [64, 32],
+  "pid_embedding_width": 8,
+  "pilot": {
+    "train_rows": 5000,
+    "tune_rows": 1000,
+    "models": ["PFN-K", "PFN-ID"],
+    "seeds": [17],
+    "neural_max_epochs": 3
+  },
+  "full": {
+    "train_rows": 60000,
+    "tune_rows": 10000,
+    "models": ["XGB", "MLP", "PFN-K", "PFN-ID"],
+    "seeds": [17, 29, 43],
+    "neural_max_epochs": 30
+  }
+}

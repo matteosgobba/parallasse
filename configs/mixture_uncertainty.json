@@ -1,0 +1,38 @@
+{
+  "protocol_version": "0.6-mixture-uncertainty",
+  "parent_protocol": "configs/mixtures.json",
+  "source_closure_run": "results/task0006/20261111-source-closure-01/run.json",
+  "interpretation": "Exploratory follow-up designed after core source and target performance was known.",
+  "interval": {
+    "level": 0.95,
+    "method": "Unbounded normal interval from a first-order delta expansion of the accepted-count inverse.",
+    "variance": "[r*(1-r)/N + f_hat^2*e_q*(1-e_q)/n_q + (1-f_hat)^2*e_g*(1-e_g)/n_g] / (e_q-e_g)^2",
+    "assumptions": "Independent binomial pseudo-data acceptance and source-response class counts, fixed checkpoints and strict numerical cuts.",
+    "scope": "Includes finite pseudo-data and source-response precision. Threshold-selection and retraining uncertainty are outside the interval. Generator differences are assessed through empirical bias and coverage."
+  },
+  "source_coverage_control": {
+    "population": "TASK-0006 source pseudo-data population, with 5000 rows per class.",
+    "response_per_replicate": "Draw 5000 quarks and 5000 gluons independently with replacement from this same empirical class law. These are simulated repeated measurements, distinct from the actual disjoint pools.",
+    "pseudo_data_per_replicate": "Draw an IID mixture from the same class law, independently of the simulated response measurement. Reuse the original six cells and 1000 replicates per cell.",
+    "rng_seed": 20261113,
+    "gate": "Require every checkpoint/cell coverage to lie within five binomial MCSE of 0.95 before opening target score arrays. This is an implementation diagnostic across the declared grid.",
+    "mcse_for_gate": "sqrt(0.95*0.05/1000)"
+  },
+  "fixed_response_modes": {
+    "pythia": "Reuse the TASK-0006 accepted counts and fixed original response measurements. Coverage is conditional on those finite pools.",
+    "herwig": "Draw mixtures from the saved Herwig score archive using the same original Pythia response measurements. Coverage is conditional on those finite pools.",
+    "rng_seed": 20261114
+  },
+  "bias_comparison": {
+    "point": "Use the exact conditional expectation under the observed class pools, eliminating Monte Carlo integration noise in expected bias.",
+    "aggregation": "Absolute bias per seed, then arithmetic mean. Keep seed ranges. Negative PID-minus-kinematics contrast favours PID.",
+    "primary_fraction": 0.5,
+    "primary_pseudo_data_size": 10000,
+    "bias_sample_size_dependence": "Expected bias at fixed response is independent of pseudo-data N. Report its contrast once per fraction. RMSE and interval coverage retain both sample sizes.",
+    "bootstrap": "Class-stratified row bootstrap of the actual source response and complete Herwig class pools. Reuse row indices across model/seed columns within each class. Source and target draws are independent. Descriptive percentile intervals at fixed cuts and checkpoints.",
+    "replicates": 500,
+    "rng_seed": 20261115
+  },
+  "stages": "source freezes protocol and implementation, saves coverage controls and original-pool interval diagnostics, then records source_validated. target verifies that state and all frozen hashes before opening target scores.",
+  "efn": "Standby pending completion of the mixture expansion and the user's subsequent decision."
+}

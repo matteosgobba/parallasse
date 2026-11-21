@@ -1,0 +1,228 @@
+{
+  "by_fraction": {
+    "0.25": {
+      "contrasts": {
+        "PFN-ID_minus_PFN-K": {
+          "bootstrap_95_hi": 0.051365090245602776,
+          "bootstrap_95_lo": 0.0419343549621629,
+          "mean": 0.046298066469065056,
+          "seed_max": 0.057636142353274855,
+          "seed_min": 0.03747583083614725
+        },
+        "PFN-K_minus_XGB": {
+          "bootstrap_95_hi": -0.012640022706877047,
+          "bootstrap_95_lo": -0.021040014590125947,
+          "mean": -0.016624912637696793,
+          "seed_max": -0.015320425674604343,
+          "seed_min": -0.01763845415752957
+        }
+      },
+      "models": {
+        "MLP": {
+          "absolute_bias_bootstrap_95_hi": 0.1082799957275718,
+          "absolute_bias_bootstrap_95_lo": 0.09245068251685454,
+          "mean_absolute_bias": 0.09981748891378313,
+          "mean_signed_bias": 0.09981748891378313,
+          "seed_bias_max": 0.10136539302902148,
+          "seed_bias_min": 0.09749487254614714
+        },
+        "PFN-ID": {
+          "absolute_bias_bootstrap_95_hi": 0.13841268052905153,
+          "absolute_bias_bootstrap_95_lo": 0.12398007621950043,
+          "mean_absolute_bias": 0.13135872515661243,
+          "mean_signed_bias": 0.13135872515661243,
+          "seed_bias_max": 0.1421426600441501,
+          "seed_bias_min": 0.12236823636746436
+        },
+        "PFN-K": {
+          "absolute_bias_bootstrap_95_hi": 0.09229915041970899,
+          "absolute_bias_bootstrap_95_lo": 0.07743441345947463,
+          "mean_absolute_bias": 0.08506065868754738,
+          "mean_signed_bias": 0.08506065868754738,
+          "seed_bias_max": 0.08578305284044979,
+          "seed_bias_min": 0.08450651769087525
+        },
+        "XGB": {
+          "absolute_bias_bootstrap_95_hi": 0.10955176729380986,
+          "absolute_bias_bootstrap_95_lo": 0.09400085929216558,
+          "mean_absolute_bias": 0.10168557132524418,
+          "mean_signed_bias": 0.10168557132524418,
+          "seed_bias_max": 0.10253085968884668,
+          "seed_bias_min": 0.10110347851505413
+        }
+      }
+    },
+    "0.5": {
+      "contrasts": {
+        "PFN-ID_minus_PFN-K": {
+          "bootstrap_95_hi": 0.044547239047266644,
+          "bootstrap_95_lo": 0.035180926786744046,
+          "mean": 0.039590307644687774,
+          "seed_max": 0.04762439571077992,
+          "seed_min": 0.03233417792474713
+        },
+        "PFN-K_minus_XGB": {
+          "bootstrap_95_hi": -0.00782085738275282,
+          "bootstrap_95_lo": -0.016560570591070276,
+          "mean": -0.011940350844608613,
+          "seed_max": -0.010801283952344365,
+          "seed_min": -0.012600382126517373
+        }
+      },
+      "models": {
+        "MLP": {
+          "absolute_bias_bootstrap_95_hi": 0.06568053406584744,
+          "absolute_bias_bootstrap_95_lo": 0.048049494407644125,
+          "mean_absolute_bias": 0.055988274528291436,
+          "mean_signed_bias": 0.055988274528291436,
+          "seed_bias_max": 0.057295464488843595,
+          "seed_bias_min": 0.05343539408145337
+        },
+        "PFN-ID": {
+          "absolute_bias_bootstrap_95_hi": 0.09509672575047631,
+          "absolute_bias_bootstrap_95_lo": 0.07882148326361443,
+          "mean_absolute_bias": 0.08735209670039579,
+          "mean_signed_bias": 0.08735209670039579,
+          "seed_bias_max": 0.09537113686534227,
+          "seed_bias_min": 0.07988279879289772
+        },
+        "PFN-K": {
+          "absolute_bias_bootstrap_95_hi": 0.05554841673459392,
+          "absolute_bias_bootstrap_95_lo": 0.03922050158611867,
+          "mean_absolute_bias": 0.047761789055708014,
+          "mean_signed_bias": 0.047761789055708014,
+          "seed_bias_max": 0.047990005144411096,
+          "seed_bias_min": 0.04754862086815059
+        },
+        "XGB": {
+          "absolute_bias_bootstrap_95_hi": 0.06862406523753196,
+          "absolute_bias_bootstrap_95_lo": 0.05090940996256716,
+          "mean_absolute_bias": 0.05970213990031662,
+          "mean_signed_bias": 0.05970213990031662,
+          "seed_bias_max": 0.06016612760952644,
+          "seed_bias_min": 0.05879128909675546
+        }
+      }
+    },
+    "0.75": {
+      "contrasts": {
+        "PFN-ID_minus_PFN-K": {
+          "bootstrap_95_hi": 0.03898759558858768,
+          "bootstrap_95_lo": 0.027178657626316622,
+          "mean": 0.03288254882031042,
+          "seed_max": 0.037612649068284765,
+          "seed_min": 0.027192525013346902
+        },
+        "PFN-K_minus_XGB": {
+          "bootstrap_95_hi": -0.0017126069061508815,
+          "bootstrap_95_lo": -0.012865747652660872,
+          "mean": -0.007255789051520504,
+          "seed_max": -0.006282142230084498,
+          "seed_min": -0.007922914828971894
+        }
+      },
+      "models": {
+        "MLP": {
+          "absolute_bias_bootstrap_95_hi": 0.024116442250694873,
+          "absolute_bias_bootstrap_95_lo": 0.002438241614938242,
+          "mean_absolute_bias": 0.012159060142799624,
+          "mean_signed_bias": 0.012159060142799624,
+          "seed_bias_max": 0.013875728862973724,
+          "seed_bias_min": 0.009375915616759545
+        },
+        "PFN-ID": {
+          "absolute_bias_bootstrap_95_hi": 0.05319253943736766,
+          "absolute_bias_bootstrap_95_lo": 0.03311722537020733,
+          "mean_absolute_bias": 0.043345468244179064,
+          "mean_signed_bias": 0.043345468244179064,
+          "seed_bias_max": 0.048599613686534315,
+          "seed_bias_min": 0.03739736121833104
+        },
+        "PFN-K": {
+          "absolute_bias_bootstrap_95_hi": 0.020821017002956185,
+          "absolute_bias_bootstrap_95_lo": 0.0015444429422423478,
+          "mean_absolute_bias": 0.010462919423868641,
+          "mean_signed_bias": 0.010462919423868641,
+          "seed_bias_max": 0.01098696461824955,
+          "seed_bias_min": 0.010196957448372235
+        },
+        "XGB": {
+          "absolute_bias_bootstrap_95_hi": 0.02922317381243678,
+          "absolute_bias_bootstrap_95_lo": 0.006960262672655596,
+          "mean_absolute_bias": 0.017718708475389144,
+          "mean_signed_bias": 0.017718708475389144,
+          "seed_bias_max": 0.018909879447221445,
+          "seed_bias_min": 0.016479099678456732
+        }
+      }
+    }
+  },
+  "primary_fraction": 0.5,
+  "primary_sample_size": 10000,
+  "replication_criterion_met": true,
+  "response_sizes": {
+    "gluons": 25000,
+    "quarks": 25000
+  },
+  "scope": "Replication on new events under the same particle-level generator versions, tunes and kinematic selection. Finite response and pseudo-data precision are included. Retraining, numerical-cut selection and a full detector systematic remain separate.",
+  "source_response_gluon_acceptance": [
+    0.10956,
+    0.10776,
+    0.10892,
+    0.10684,
+    0.10796,
+    0.10656,
+    0.1078,
+    0.10708,
+    0.10532,
+    0.10556,
+    0.10596,
+    0.10356
+  ],
+  "source_response_quark_acceptance": [
+    0.6572,
+    0.65192,
+    0.65628,
+    0.65564,
+    0.65652,
+    0.65264,
+    0.64872,
+    0.64408,
+    0.6496,
+    0.67552,
+    0.6858,
+    0.6676
+  ],
+  "target_gluon_acceptance": [
+    0.18892,
+    0.1854,
+    0.18742,
+    0.18584,
+    0.18774,
+    0.18386,
+    0.17392,
+    0.1722,
+    0.17258,
+    0.19952,
+    0.2155,
+    0.20076
+  ],
+  "target_quark_acceptance": [
+    0.64372,
+    0.63976,
+    0.64214,
+    0.63946,
+    0.6396,
+    0.6337,
+    0.63404,
+    0.63024,
+    0.63458,
+    0.67262,
+    0.68686,
+    0.66832
+  ],
+  "target_sizes": {
+    "gluons": 50000,
+    "quarks": 50000
+  }
+}

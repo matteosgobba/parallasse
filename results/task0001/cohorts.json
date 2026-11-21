@@ -1,0 +1,82 @@
+{
+  "cohorts": {
+    "calibration": {
+      "class_counts": {
+        "gluon_0": 5000,
+        "quark_1": 5000
+      },
+      "generator": "pythia",
+      "original_file": "QG_jets.npz",
+      "record_id": "3164691",
+      "row_ids_path": "data/processed/calibration_rows.npy",
+      "row_ids_sha256": "8f689ffe7ef72dd0c029927b2f0917cce05be73ba28e66d349d48c7225908b4d",
+      "rows": 10000
+    },
+    "target": {
+      "class_counts": {
+        "gluon_0": 50000,
+        "quark_1": 50000
+      },
+      "generator": "herwig",
+      "original_file": "QG_jets_herwig_0.npz",
+      "record_id": "3066475",
+      "row_ids_path": "data/processed/target_rows.npy",
+      "row_ids_sha256": "94e1da7c0c68f62db199c035d5c6c006b53e9d7e5c8a9237e22ba7102a15fd01",
+      "rows": 100000
+    },
+    "test": {
+      "class_counts": {
+        "gluon_0": 10000,
+        "quark_1": 10000
+      },
+      "generator": "pythia",
+      "original_file": "QG_jets.npz",
+      "record_id": "3164691",
+      "row_ids_path": "data/processed/test_rows.npy",
+      "row_ids_sha256": "39d35219b1da74825f18b4e56603e4b5bfc93a81a78db91a95359554f8492153",
+      "rows": 20000
+    },
+    "train": {
+      "class_counts": {
+        "gluon_0": 30000,
+        "quark_1": 30000
+      },
+      "generator": "pythia",
+      "original_file": "QG_jets.npz",
+      "record_id": "3164691",
+      "row_ids_path": "data/processed/train_rows.npy",
+      "row_ids_sha256": "3fb3a36eeff07d3ae56f1ee8a0d13aa251992db4db1729df6c293584e989f3f6",
+      "rows": 60000
+    },
+    "tune": {
+      "class_counts": {
+        "gluon_0": 5000,
+        "quark_1": 5000
+      },
+      "generator": "pythia",
+      "original_file": "QG_jets.npz",
+      "record_id": "3164691",
+      "row_ids_path": "data/processed/tune_rows.npy",
+      "row_ids_sha256": "1daff5ab3a0554ada1937887670ebeeba708cd1164642f1c0820b0919b6c3938",
+      "rows": 10000
+    }
+  },
+  "config_sha256": "8c36392f916cc85aa0a54a7163b6bb1772e0a9984c7673ef0a862f28573b1436",
+  "duplicate_policy": "deduplicate_within_generator_keep_lowest_row; exclude_target_overlap",
+  "fractions": {
+    "calibration": 0.1,
+    "test": 0.2,
+    "train": 0.6,
+    "tune": 0.1
+  },
+  "numpy_version": "2.5.4",
+  "protocol_version": "0.2-data",
+  "raw_sha256": {
+    "source": "3f27a02eab06e8b83ccc9d25638021e6e24c9361341730961f9d560dee12c257",
+    "target": "0527349778c0ab2f7da268975fb9e7c0705c88d60f2c478401d941b9913f4d44"
+  },
+  "rng": "numpy.random.Generator(PCG64)",
+  "rounding": "per-class largest remainder; ties in train/tune/calibration/test order",
+  "schema_version": 1,
+  "split_seed": 20261104
+}

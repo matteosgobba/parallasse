@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "protocol_version": "0.9-score-template-design",
+  "task": "TASK-0011",
+  "question": "Do simulation-aware score-template intervals improve quark-fraction inference coverage over the original cut estimator while remaining useful, and how does this depend on PID?",
+  "interpretation": "Prospective reserved-event comparison after exploratory TASK-0010. Herwig supplies modelling templates; evaluation is within the declared generator family, not on an unseen generator or real detector data.",
+  "models": ["PFN-K", "PFN-ID"],
+  "seeds": [17, 29, 43],
+  "model_freeze": "results/task0003/20261110-source-fits-01/evaluation_freeze.json",
+  "core_evaluation": "results/task0004/20261110-heldout-01/run.json",
+  "feasibility_run": "results/task0010/20261113-template-pilot-01/run.json",
+  "feasibility_validation": "results/task0010/validation.json",
+  "previous_replication": "results/task0008/20261111-replication-01/run.json",
+  "previous_efn": "results/task0009/20261111-efn-02/run.json",
+  "with_bc": false,
+  "files": [
+    {
+      "role": "source",
+      "generator": "pythia",
+      "record_id": "3164691",
+      "record_version": "v1",
+      "filename": "QG_jets_3.npz",
+      "published_md5": "dd3ad998b0a1bd9acea2ecf029a8a921",
+      "size_bytes": 106428597,
+      "expected_rows": 100000
+    },
+    {
+      "role": "target",
+      "generator": "herwig",
+      "record_id": "3066475",
+      "record_version": "v1",
+      "filename": "QG_jets_herwig_3.npz",
+      "published_md5": "821b293d4e68db8b2bd40a1732d1d865",
+      "size_bytes": 100735392,
+      "expected_rows": 100000
+    }
+  ],
+  "cohorts": {
+    "partition_seeds": {"pythia": 2026111304, "herwig": 2026111305},
+    "algorithm": "Existing exact-identity policy, lowest-row deduplication and conflict rejection. Exclude all 600k prior identities, prioritize retained new Pythia over new Herwig on overlap. Within generator, PCG64 class permutation in label order 0,1; first floor(n/2) template, remainder evaluation; sort each role by original row ID.",
+    "expected_rows_per_class_per_role": 25000,
+    "minimum_rows_per_class_per_role": 20000,
+    "identity_scope": "Exact constituent identities, not original collision identity; collision IDs unavailable. Labels used only for integrity, stratification, templates and pseudo-data construction.",
+    "evaluation_access": "Integrity and label-count/role checks only until executable freeze and source/modelling validation gates pass. No score or label-conditioned feature performance inspection in TASK-0011."
+  },
+  "binning": {
+    "bins": 8,
+    "reference": "artifacts/task0010/20261113-template-pilot-01/source_binning.npz",
+    "rule": "Reuse the six exact TASK-0010 edge arrays, fixed from pooled original Pythia response scores only; full [0,1] range. No new-data quantile refit, merging or smoothing.",
+    "minimum_template_bin_count": 20,
+    "sparse_rule": "Halt modelling validation if any measured modelling class/bin has fewer than 20 rows. Retain zero-count likelihood semantics in repeated controls. A repair requires a new version before reserved evaluation; never merge bins from final outcomes."
+  },
+  "methods": ["original_cut_delta", "source_multinomial_profile", "simulation_multinomial_profile"],
+  "likelihood": {
+    "pseudo_data": "Multinomial at fixed N, positive class quark=1",
+    "auxiliary": "Independent fixed-total multinomials for measured class templates, normalized separately; nuisance template probabilities profiled jointly",
+    "source_weights": ["f", "1-f"],
+    "simulation_weights": ["f*(1-alpha)", "(1-f)*(1-alpha)", "f*alpha", "(1-f)*alpha"],
+    "component_order": ["pythia_quark", "pythia_gluon", "herwig_quark", "herwig_gluon"],
+    "fraction_bounds": [0.0, 1.0],
+    "variation_bounds": [0.0, 1.0],
+    "generator_constraint": "None; alpha is a bounded sensitivity coordinate, not a random-generator prior. One common alpha for both classes is a model assumption.",
+    "original_cut": "Reuse each original strict score > threshold and the existing unbounded inverse/delta interval, using efficiencies measured on the new Pythia template role. Never recalibrate cuts."
+  },
+  "grid": {
+    "fractions": [0.25, 0.5, 0.75],
+    "sample_sizes": [1000, 10000],
+    "modelling_variations": [0.0, 0.5, 1.0],
+    "evaluation_generators": ["pythia", "herwig"],
+    "repetitions": 1000,
+    "primary_fraction": 0.5,
+    "primary_sample_size": 10000,
+    "primary_generator": "herwig"
+  },
+  "calibration": {
+    "nominal_coverage": 0.95,
+    "minimum_lr_cutoff": 3.841458820694124,
+    "repetitions_per_cell": 1000,
+    "source_cells": 36,
+    "simulation_cells": 108,
+    "family_cells": 144,
+    "family_quantile_error": 0.05,
+    "order_statistic": "k = 1 + binom.ppf(1 - 0.05/144, 1000, 0.95), one-based. Use the kth sorted fixed-fraction LR including failed fits as +infinity. This is a conservative Monte Carlo tolerance bound, not a data uncertainty.",
+    "cutoff_rule": "Separately for each method/checkpoint/N, maximum of the minimum cutoff and the k-th LR over its declared f/alpha calibration cells. Source method maximizes over f only; simulation method over f and alpha. No optional cutoff selection after validation.",
+    "sampling": "Independently redraw every finite class-template measurement and IID pseudo-data from the same specified empirical modelling laws, using actual audited template class sizes. Draw quark and generator components independently with Bernoulli probabilities f and alpha; share selected rows across checkpoints. Source stage uses Pythia only.",
+    "calibration_gate": "No more than 1% unresolved LR-fit failures per cell and finite cutoffs; otherwise halt. Keep failures, no replacement draws. Freeze numerical cutoffs before independent validation and final evaluation."
+  },
+  "validation": {
+    "source_stage": "Calibrate and validate source-only intervals on repeated-template Pythia common-law draws before Herwig template scoring. Include original cut intervals as a reference.",
+    "modelling_stage": "After source gate, score only Herwig template rows and calibrate/validate the four-template model at alpha 0,0.5,1. Both final evaluation roles remain sealed.",
+    "gate": "For each checkpoint/f/N/declared variation, all-attempted coverage within five nominal binomial MCSE of 0.95, unresolved failures <=1%, finite well-defined sets and numerical scan checks passed. Diagnostic across the declared empirical grid, not simultaneous significance or universal coverage.",
+    "repetitions": 1000,
+    "independence": "Calibration, validation and reserved-pool pseudo-data streams are distinct. No validation-driven retuning; fail, preserve and version before a repair.",
+    "conditional_evaluation": "Actual class-template measurements fixed; IID pseudo-data sampled with replacement from the disjoint evaluation role. Report conditional coverage and finite-pool offsets separately from repeated-template validation."
+  },
+  "numerics": {
+    "optimizer": "L-BFGS-B analytic gradients; initial alpha starts 0,0.5,1; independent SLSQP checks on declared source/synthetic cases and flagged solutions",
+    "normalization": "B-1 softmax coordinates per class; no pseudocount in objective; logits bounded +/-35 with saturation flagged",
+    "noiseless_parameter_atol": 0.0001,
+    "gradient_atol": 0.000001,
+    "optimizer_nll_agreement": 0.0001,
+    "negative_profile_lr_tolerance": 0.00001,
+    "endpoint_lr_atol": 0.002,
+    "fraction_root_atol": 0.000002,
+    "scan_nodes": [17, 33, 65, 129, 257],
+    "scan_stability_fraction_atol": 0.002,
+    "scan_rule": "Compare successive scans including unconditional/branch minima, preserve every detected component and bracket crossings. Stop at first stable component count/endpoints within tolerance; unresolved at 257 nodes is an interval failure. A lower profile minimum triggers unconditional refitting. Finite scans are not a theorem excluding every arbitrarily narrow island."
+  },
+  "primary_decision": {
+    "method_comparison": "simulation_multinomial_profile minus original_cut_delta, separately for every checkpoint in the primary Herwig cell",
+    "coverage_floor": 0.93,
+    "maximum_failure_rate": 0.01,
+    "maximum_median_set_span": 0.25,
+    "improvement": "Require all six checkpoints to meet coverage/usefulness/failure criteria and their paired descriptive 95% coverage-difference interval lower endpoints >0. This is a bounded consistency criterion, not a multiplicity-adjusted claim. If unmet, retain the outcome; do not promote a secondary contrast.",
+    "secondary": "Source-template comparator, every cell and seed, PID dependence, signed/absolute bias, RMSE, total set length/span and disconnected frequencies, boundary/out-of-range rates. No required bias or model win.",
+    "failure_policy": "All 1000 attempts form the coverage denominator; unresolved failures are noncoverage. Bias/RMSE/width use successful fits with explicit denominators and failure rates; no silent deletion or clipping."
+  },
+  "pairing_and_uncertainty": {
+    "event_pairing": "Within each draw, share original class-row IDs across all six checkpoints and all estimators. Source and target populations are independent, not paired events. Keep seed metrics separate; no ensemble.",
+    "performance_comparison": "2000 paired bootstrap resamples of the 1000 pseudoexperiment indices per endpoint/f/N cell, shared across methods/checkpoints. Descriptive percentile intervals describe Monte Carlo precision conditional on observed pools, not an independent event-population bootstrap or retraining uncertainty.",
+    "bootstrap_repetitions": 2000,
+    "coverage_interval": "Per-checkpoint Wilson 95% Monte Carlo interval and exact hits/attempts",
+    "scope": "Finite pseudo-data and template statistics under the declared model; no training-selection, numerical-cut selection, unmodelled generator/tune, detector or real-data uncertainty."
+  },
+  "rng": {
+    "algorithm": "NumPy PCG64; SeedSequence(root).spawn(cells) in checkpoint-independent cell order, with shared row draws across checkpoints",
+    "source_calibration": 2026111310,
+    "source_validation": 2026111311,
+    "simulation_calibration": 2026111312,
+    "simulation_validation": 2026111313,
+    "pythia_evaluation": 2026111314,
+    "herwig_evaluation": 2026111315,
+    "paired_metric_bootstrap": 2026111316,
+    "cell_order": "sample_size ascending, fraction ascending, alpha ascending where applicable; generator stages use independent roots"
+  },
+  "resources": {
+    "active_planning_hours": [12, 20],
+    "numerical_threads_per_worker": 1,
+    "maximum_statistical_workers": 2,
+    "full_machine_cpu_hour_ceiling": 24,
+    "source_confidence_sets": 108000,
+    "simulation_confidence_sets": 180000,
+    "source_calibration_lr_pairs": 36000,
+    "simulation_calibration_lr_pairs": 108000,
+    "interpretation": "288k confidence sets include 36k source-only validation sets needed before Herwig-template access, in addition to the earlier pilot's 252k projection. Refined scans may raise cost; TASK-0012 must benchmark before launch. Checkpoint partial work at ceiling and review scope; never silently reduce repetitions or omit cells. No full campaign in TASK-0011."
+  },
+  "freeze_order": [
+    "TASK-0011 freezes statistical design, exact data roles, old bin edges, models/cuts, dependencies and audit code; no fresh scores",
+    "TASK-0012 freezes complete executable inference/scoring implementation after source/synthetic smoke, before any fresh score",
+    "TASK-0013 source validation precedes Herwig-template access; modelling calibration/validation precedes either final evaluation role",
+    "TASK-0014 scores the reserved final roles and executes the unchanged comparison"
+  ]
+}

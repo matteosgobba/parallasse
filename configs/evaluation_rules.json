@@ -1,0 +1,21 @@
+{
+  "protocol_version": "0.4-heldout-rules",
+  "positive_class": "quark=1",
+  "score": "XGB probability from selected boosting range; sigmoid of neural logit",
+  "calibration_cohort": "source calibration gluons only",
+  "background_acceptance_target": 0.1,
+  "threshold_rule": "If n sorted gluon scores and k=floor(0.1*n), take zero-based index n-k-1. Accept only score > threshold, so ties are conservative. Freeze each model/seed threshold before either final score array is computed.",
+  "final_cohorts": ["source test", "target Herwig"],
+  "metrics": ["ROC-AUC", "TPR", "FPR", "accepted and total class counts"],
+  "gap": "AUC(source test) - AUC(target)",
+  "contrasts": ["PFN-K minus XGB on each cohort", "PFN-ID minus PFN-K on each cohort", "PID contrast on source minus PID contrast on target"],
+  "matched_input_control": "Report XGB and MLP using identical aggregate features; no final model selection.",
+  "aggregation": "Per-seed metrics; arithmetic mean and range across three seeds, never a prediction ensemble.",
+  "bootstrap": {
+    "replicates": 500,
+    "seed": 20261110,
+    "rng": "numpy PCG64, independent child stream per cohort",
+    "sampling": "Resample rows within each class and cohort, sharing indices across models and seeds. Compute contrasts of seed-mean metrics; source and target draws are independent for the transfer interaction.",
+    "interval": "Descriptive 2.5% and 97.5% percentiles; fixed trained models and fixed calibrated cuts. Excludes retraining and threshold-estimation uncertainty; no simultaneous-significance claim."
+  }
+}

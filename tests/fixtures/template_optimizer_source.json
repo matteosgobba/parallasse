@@ -1,0 +1,80 @@
+{
+  "source": "TASK-0012 source-only failed smoke, 20261115-template-engine-01",
+  "data_attribution": "Komiske, Metodiev and Thaler; Pythia v1, DOI 10.5281/zenodo.3164691; CC BY 4.0; derived histograms, distinct from code licensing",
+  "cases": [
+    {
+      "key": "PFN-ID-29",
+      "replicate": 3,
+      "data": [
+        115,
+        136,
+        117,
+        139,
+        143,
+        97,
+        130,
+        123
+      ],
+      "auxiliary": [
+        [
+          168,
+          343,
+          544,
+          913,
+          1470,
+          1894,
+          2273,
+          2395
+        ],
+        [
+          2223,
+          2196,
+          1911,
+          1592,
+          1063,
+          640,
+          255,
+          120
+        ]
+      ],
+      "cutoff": 4.496351078647422
+    },
+    {
+      "key": "PFN-K-17",
+      "replicate": 7,
+      "data": [
+        132,
+        124,
+        103,
+        112,
+        140,
+        105,
+        149,
+        135
+      ],
+      "auxiliary": [
+        [
+          195,
+          417,
+          613,
+          1006,
+          1390,
+          1768,
+          2161,
+          2450
+        ],
+        [
+          2307,
+          2011,
+          1883,
+          1530,
+          1115,
+          688,
+          340,
+          126
+        ]
+      ],
+      "cutoff": 4.541982312381151
+    }
+  ]
+}

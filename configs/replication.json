@@ -1,0 +1,57 @@
+{
+  "protocol_version": "0.7-independent-event-replication",
+  "method_parent": "configs/mixture_uncertainty.json",
+  "hypothesis_origin": "Exploratory TASK-0007 found positive PFN-ID minus PFN-K absolute inference bias. New-file performance was not inspected when this design was fixed.",
+  "files": [
+    {
+      "role": "source",
+      "generator": "pythia",
+      "record_id": "3164691",
+      "record_version": "v1",
+      "filename": "QG_jets_1.npz",
+      "published_md5": "f6a1081c76a47386bc11abcf0e499552",
+      "expected_rows": 100000
+    },
+    {
+      "role": "target",
+      "generator": "herwig",
+      "record_id": "3066475",
+      "record_version": "v1",
+      "filename": "QG_jets_herwig_1.npz",
+      "published_md5": "d6ff8cc5c6192309fba915114fdc8358",
+      "expected_rows": 100000
+    }
+  ],
+  "with_bc": false,
+  "data_policy": "Keep the lowest row within exact duplicate groups, reject conflicting labels, remove any new jet exactly matching either original raw file, and remove target overlap with retained new source jets. Use the existing canonical constituent hash. Record all removals before scoring. Exact matching does not establish collision-level independence.",
+  "source_roles": "After the audit, stratify by class and split each retained source class in half using a seeded permutation. First half is response, second half is pseudo-data population. Expected 25000 per class in each group. Persist actual original file row IDs. Counts are determined by the integrity audit, never model performance.",
+  "precision_change": "Use all retained new source events. The larger response sample improves efficiency precision compared with the exploratory 5000-per-class response. Keep the estimator, cuts, checkpoints, primary question and pseudo-data sizes.",
+  "partition_seed": 20261116,
+  "fractions": [
+    0.25,
+    0.5,
+    0.75
+  ],
+  "sample_sizes": [
+    1000,
+    10000
+  ],
+  "replicates": 1000,
+  "primary_fraction": 0.5,
+  "primary_sample_size": 10000,
+  "primary_contrast": "PFN-ID minus PFN-K in absolute expected Herwig fraction-inference bias, forming absolute bias per seed before averaging.",
+  "replication_criterion": "Positive primary contrast with a positive lower endpoint of the descriptive paired 95% percentile interval. Report the full interval, all three seed contrasts, all secondary cells and any failure of this criterion.",
+  "inference_method": "Reuse the TASK-0007 single-cut inverse and unbounded first-order delta interval, with actual new source-response class counts. Keep the 12 trained checkpoints and original strict numerical cuts. No refitting or target recalibration.",
+  "source_control": "Repeat source-response measurement and IID pseudo-data generation independently from the new source pseudo-data class law. Require all 72 control coverages within 5*sqrt(0.95*0.05/1000) of 0.95 before target model scoring. Report actual fixed-pool source coverage separately.",
+  "source_control_seed": 20261117,
+  "source_pseudo_data_seed": 20261118,
+  "target_pseudo_data_seed": 20261119,
+  "bootstrap_seed": 20261120,
+  "bootstrap_replicates": 500,
+  "bootstrap": "Class-stratified row bootstrap of the actual new source response and retained new Herwig pools. Share indices across model and seed columns within class. Independent source and target streams. Fixed models and original numerical cuts.",
+  "rng": "numpy PCG64 with independent child streams per cell and role",
+  "stages": "Audit file bytes, integrity and overlaps and persist cohorts. Freeze the audited IDs, complete numerical procedure, code and original models/cuts before any new-file prediction. Score source, validate intervals, then score target and evaluate.",
+  "scope": "Replication on new events under the same particle-level generator versions, tunes and kinematic selection. Finite response and pseudo-data precision are included. Retraining, numerical-cut selection and a full detector systematic remain separate.",
+  "efn": "Standby pending completion of this expansion and the user's next decision.",
+  "secondary_classification": "Record exact per-seed ROC-AUC and fixed-cut class acceptances on each retained new cohort as descriptive diagnostics. No additional classifier or threshold selection."
+}

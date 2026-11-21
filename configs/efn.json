@@ -1,0 +1,137 @@
+{
+  "protocol_version": "0.8.1-efn-study",
+  "authorization": "User requested proceeding with EFN on 2026-11-11 after the mixture expansion.",
+  "question": "Does the IRC-constrained EFN trade classification performance for lower generator-transfer quark-fraction inference bias compared with PFN-K?",
+  "efn_definition": "logit = F(sum_i z_i * Phi(delta_y_i, wrapped_delta_phi_i)), z_i = pt_i/sum_j(pt_j). Use the existing pT-weighted/circular centering and masking. Phi consumes directions only. PID is unused.",
+  "irc_scope": "Continuous particle/head networks and energy-weighted pooling. Check permutation, arbitrary-padding, collinear split, zero-weight and soft limits, including the shared preprocessing on physical jets. The shared angular-center validity contract still applies.",
+  "architecture": {
+    "particle_widths": [
+      32,
+      32,
+      64
+    ],
+    "head_widths": [
+      64,
+      32
+    ]
+  },
+  "training": {
+    "device": "cpu",
+    "cpu_threads": 4,
+    "batch_size": 256,
+    "neural_learning_rate": 0.001,
+    "neural_weight_decay": 0.0001,
+    "neural_patience": 5,
+    "pilot": {
+      "train_rows": 5000,
+      "tune_rows": 1000,
+      "seeds": [
+        17
+      ],
+      "neural_max_epochs": 3
+    },
+    "full": {
+      "train_rows": 60000,
+      "tune_rows": 10000,
+      "seeds": [
+        17,
+        29,
+        43
+      ],
+      "neural_max_epochs": 30
+    }
+  },
+  "training_scope": "Only the original persisted Pythia train and tune cohorts. Same widths, source budget, optimizer, stopping policy and batch-order seeds as the existing PFNs. EFN has different input restrictions and parameter count. No architecture search.",
+  "selection": "Highest source-tuning ROC-AUC, first exact tie retained, patience 5 within declared ceiling. Pilot is a numerical feasibility check.",
+  "calibration": "After all full EFN fits and model freeze, score only the original 5000 Pythia calibration gluons and freeze strict 10% cuts with the existing order-statistic rule. Reuse original cuts for the four baseline families.",
+  "files": [
+    {
+      "record_id": "3164691",
+      "filename": "QG_jets_2.npz",
+      "record_version": "v1",
+      "published_md5": "2628367c57ba598f4473c870d1381041",
+      "expected_rows": 100000,
+      "size_bytes": 106490468,
+      "role": "source",
+      "generator": "pythia"
+    },
+    {
+      "record_id": "3066475",
+      "filename": "QG_jets_herwig_2.npz",
+      "record_version": "v1",
+      "published_md5": "625bc4a0619b5b2551e273be493c6092",
+      "expected_rows": 100000,
+      "size_bytes": 100704098,
+      "role": "target",
+      "generator": "herwig"
+    }
+  ],
+  "with_bc": false,
+  "data_policy": "Exclude exact identities in all four previously used raw files. Deduplicate new files, reject conflicting labels, exclude target/source overlap. Use the existing canonical identity and seeded class-stratified source half split. Record all removals before any new-file prediction.",
+  "partition_seed": 20261121,
+  "source_roles": "Use half of retained new Pythia per class for response, half for pseudo-data. Expected 25000 per class in each group. New Herwig is target pseudo-data. Persist original file row IDs.",
+  "models": [
+    "XGB",
+    "MLP",
+    "PFN-K",
+    "PFN-ID",
+    "EFN"
+  ],
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "fractions": [
+    0.25,
+    0.5,
+    0.75
+  ],
+  "sample_sizes": [
+    1000,
+    10000
+  ],
+  "replicates": 1000,
+  "primary_fraction": 0.5,
+  "primary_sample_size": 10000,
+  "primary_contrast": "EFN minus PFN-K in absolute expected Herwig quark-fraction inference bias, taking absolute value per seed before averaging.",
+  "improvement_criterion": "A negative primary contrast with a negative upper endpoint of the descriptive paired 95% percentile interval. Retain and report the complete result if this is not met.",
+  "secondary": "All five families, every seed and cell. Source/target AUC, AUC transfer loss, EFN-minus-PFN-K AUC contrast, fixed-cut acceptance, mixture bias, RMSE and conditional coverage. All comparisons use the same audited fresh rows.",
+  "interval_method": "Reuse the unbounded delta interval with finite source-response and pseudo-data precision. Common-law source repeated-measurement coverage is tested before target prediction. Marginal intervals condition on the trained models and numerical cuts.",
+  "source_gate": "Each checkpoint/cell repeated-source coverage must be within five nominal binomial MCSE of 95%. This is a numerical procedure diagnostic on the empirical source law.",
+  "source_control_seed": 20261122,
+  "source_pseudo_seed": 20261123,
+  "target_pseudo_seed": 20261124,
+  "bias_bootstrap_seed": 20261125,
+  "classification_bootstrap_seed": 20261126,
+  "bootstrap_replicates": 500,
+  "pairing": "Share sampled rows across all 15 checkpoint columns within each class; source and target random streams are independent. Report seed variation separately from fixed-checkpoint event intervals. Never ensemble predictions.",
+  "invariance_tolerance": {
+    "probability_atol": 2e-06,
+    "probability_rtol": 1e-05,
+    "soft_limit_atol": 2e-05,
+    "soft_relative_pt": [
+      0.01,
+      0.0001,
+      1e-06,
+      1e-08
+    ]
+  },
+  "stages": "prepare audits and freezes new-file roles and code. fit runs the bounded source pilot and three source fits. calibrate freezes EFN numerical cuts. source scores new source and validates intervals. target scores fresh Herwig and completes the predeclared comparison.",
+  "interpretation": "The design follows known core and mixture-transfer observations. The new EFN comparison is fixed before inspecting new-file performance. New-event confirmation is within the same generator settings and particle-level selection.",
+  "budget": "One architecture, one pilot, three full seeds. Planning range 4-8 active hours. Machine runtime recorded separately. No required EFN win.",
+  "references": [
+    "https://arxiv.org/abs/1810.05165",
+    "https://arxiv.org/abs/2311.07652",
+    "https://energyflow.network/docs/archs/",
+    "https://keras.io/api/layers/core_layers/dense/"
+  ],
+  "initialization": "He uniform hidden kernels, zero biases, Xavier uniform output kernel. EnergyFlow documents He-uniform hidden initialization and its Keras Dense layers use zero biases.",
+  "source_training_repair": {
+    "supersedes": "20261111-efn-01",
+    "reason": "The PyTorch default initializer produced nearly constant seed-17 outputs and tuning-AUC collapse after epoch 1. Repair the source-only initialization before any calibration or new-file performance. Retain the old fits and exact source snapshot.",
+    "inspected_data": "Original Pythia train/tune only",
+    "architecture_and_data_changes": "No layer-width or cohort change. Same loss, optimizer, budget, seeds and new-file roles.",
+    "reserved_role_run": "20261111-efn-01"
+  }
+}

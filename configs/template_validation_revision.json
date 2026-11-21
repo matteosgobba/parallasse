@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "protocol_version": "0.10-score-template-validation-design",
+  "state": "prospective_design_only_not_an_executable_or_access_grant",
+  "scope": "Review of conservative calibration versus the v0.9 symmetric source gate; no new template scoring or validation draws",
+  "parent_protocol": "results/task0011/20261113-template-reservation-01/protocol.json",
+  "parent_engine": "results/task0012/20261115-template-engine-02/executable_freeze.json",
+  "preserved_failed_run": "results/task0013/20261115-template-validation-01/run.json",
+  "preserved_failed_gate": "results/task0013/20261115-template-validation-01/source_gate.json",
+  "source_cutoffs_to_reuse": "results/task0013/20261115-template-validation-01/source_cutoffs.json",
+  "source_score_reference": "artifacts/task0013/20261115-template-validation-01/pythia_template_scores.npz",
+  "change_reason": "A lower-content tolerance calibration does not target equality to nominal coverage. Separate minimum-coverage qualification from interval usefulness and retain overcoverage as a diagnostic.",
+  "qualification": {
+    "repetitions": 1000,
+    "minimum_coverage": 0.93,
+    "family_error_probability": 0.05,
+    "family_cells": 144,
+    "source_cells": 36,
+    "modelling_cells": 108,
+    "per_cell_error_probability": "0.05/144 = 1/2880",
+    "coverage_bound": "One-sided exact binomial Clopper-Pearson lower limit: 0 for h=0, otherwise beta.ppf(0.05/144, h, n-h+1), with all attempted draws in n",
+    "coverage_requirement": "Every declared cell has lower confidence bound >=0.93; no upper-coverage veto",
+    "minimum_hits_at_1000": 957,
+    "maximum_failure_rate": 0.01,
+    "maximum_median_set_span": 0.25,
+    "usefulness_requirement": "Every declared control has finite well-defined confidence components and empirical median outer span <=0.25; retain total length, span tails and disconnected frequencies",
+    "failures": "Unresolved fits/intervals are noncoverage; at most 10/1000. Bias and widths retain successful-fit denominators.",
+    "interpretation": "New Monte Carlo qualification of a 93% minimum on the fixed 144-cell common-law control grid, conditional on empirical modelling laws and independently fixed cutoffs. Not exact 95% coverage, universal generator validity, conditional disjoint-pool coverage or a simultaneous physics-performance claim.",
+    "error_budget_scope": "The 0.05 calibration-family error and 0.05 validation-qualification error are distinct; do not combine them into an unproved joint 95% guarantee. Failure/span ceilings remain empirical criteria, not simultaneous population confidence bounds."
+  },
+  "unchanged": [
+    "All six original PFNs, preprocessing, strict cuts, eight-bin score representation and audited four roles",
+    "Likelihood, fraction/alpha bounds, numerical tolerances, finite-template sampling and paired draws",
+    "Nominal calibration content 0.95, rank 973/1000 and maximum-over-truth cutoff rule; do not redraw source calibration or select smaller source cutoffs",
+    "All 1000 repetitions and the complete source/modelling/evaluation grids",
+    "Primary Herwig criterion and descriptive paired contrasts, all original uncertainty limitations",
+    "24 CPU-hour cumulative ceiling and source-before-Herwig-before-final chronology"
+  ],
+  "fresh_validation_streams_reserved_not_drawn": {
+    "source_validation": 2026111521,
+    "simulation_validation": 2026111523,
+    "algorithm": "Existing PCG64 SeedSequence cell spawning and checkpoint-shared row draws",
+    "failed_v09_validation": "Design evidence only; never recertify it as a passed source gate or use it as the new independent test"
+  },
+  "other_streams": "Retain the original, still-unused simulation calibration and final evaluation roots; keep the original source calibration/cutoffs fixed.",
+  "work_accounting": {
+    "new_source_profile_sets": 36000,
+    "new_source_cut_intervals": 36000,
+    "source_calibration_pairs_reused": 36000,
+    "remaining_modelling_profile_sets": 108000,
+    "remaining_modelling_calibration_pairs": 108000,
+    "remaining_final_profile_sets": 144000,
+    "cumulative_profile_sets_including_failed_v09": 324000,
+    "cumulative_calibration_pairs": 144000,
+    "campaign_cpu_hour_ceiling": 24,
+    "interpretation": "The extra independent source validation costs 36k profile sets; do not conceal the old 36k or reset the existing 1245.143441 CPU seconds. Rebenchmark before a future execution."
+  },
+  "implementation_prerequisites": [
+    "Implement a revision-aware runner, complete method/code/dependency freeze and version-bound gate/access proofs before any fresh stage",
+    "Test exact hit boundary, failure accounting, full-span rejection, complete-cell counts, fresh stream isolation and immutable parent records",
+    "Reuse only hash-verified original Pythia template scores and source cutoffs; never mutate or resume the source_failed v0.9 run",
+    "Run the complete fresh source validation once; if it fails, preserve the outcome rather than choosing another stream",
+    "Only a successful new source gate may open Herwig modelling templates; a full new modelling gate must precede either final role"
+  ],
+  "power_warning": "At true cell coverage 0.95, a 1000-draw 957-hit qualification has only about 17% power. This stricter qualification can fail a valid nominal procedure; no pass is promised and repetitions are not increased opportunistically."
+}

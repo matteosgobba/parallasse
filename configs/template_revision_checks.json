@@ -1,0 +1,12 @@
+{
+  "source_score_rows": 256,
+  "smoke_root": 2026111531,
+  "smoke_repetitions": 4,
+  "runtime_seed": 2026111532,
+  "synthetic_variation_tilt": 0.35,
+  "benchmark_template_rows_per_class": 25000,
+  "projection_safety_factor": 1.1,
+  "runtime_ceiling_seconds": 240,
+  "statistical_threads": 1,
+  "scope": "Original source-only scoring replay, small independent engineering smoke and source/synthetic resource probe; reserved validation roots are not drawn"
+}

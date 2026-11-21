@@ -1,0 +1,2 @@
+# Optional report builder only; the scientific environment remains locked separately.
+reportlab==4.4.9

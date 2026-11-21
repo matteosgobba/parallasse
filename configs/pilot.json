@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "status": "planned_not_run",
+  "source_train_rows": "first 5000 IDs from the persisted shuffled train cohort",
+  "source_tune_rows": "first 1000 IDs from the persisted shuffled tune cohort",
+  "forbidden_cohorts": ["calibration", "test", "target"],
+  "seed": 17,
+  "device": "cpu",
+  "cpu_threads": 4,
+  "neural_max_epochs": 3,
+  "initial_batch_size": 256,
+  "mlp_hidden_sizes": [64, 32],
+  "pfn_particle_hidden_sizes": [32, 32, 64],
+  "pfn_head_hidden_sizes": [64, 32],
+  "pid_embedding_width": 8,
+  "full_neural_epoch_ceiling": 30,
+  "full_neural_patience": 5,
+  "purpose": "check correctness and resource feasibility before final fits; no scientific performance claim",
+  "budget_policy": "one compact architecture per neural family; at most three XGB pilot configurations"
+}

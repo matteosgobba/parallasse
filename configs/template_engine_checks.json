@@ -1,0 +1,22 @@
+{
+  "task": "TASK-0012",
+  "scope": "Source-only/synthetic executable smoke and benchmark; no reserved-record scoring or official coverage gates",
+  "source_score_rows": 256,
+  "source_smoke_calibration_repetitions": 1000,
+  "source_smoke_validation_repetitions": 8,
+  "source_smoke_fraction": 0.5,
+  "source_smoke_sample_size": 1000,
+  "source_smoke_seed": 2026111501,
+  "runtime_seed": 2026111502,
+  "benchmark_template_rows_per_class": 25000,
+  "synthetic_variation_tilt": 0.35,
+  "projection_safety_factor": 1.1,
+  "numerical_threads": 1,
+  "runtime_ceiling_seconds": 240,
+  "source_only_repair": {
+    "supersedes": "20261115-template-engine-01",
+    "reason": "Two old-source interval profiles exhausted L-BFGS-B line search. Use stable KL sums and independent SLSQP verification of flagged optimizer exits; do not accept failed status as convergence.",
+    "scientific_design_changed": false,
+    "data_scope": "Original opened Pythia and synthetic cases only; all reserved scores remain unopened. Preserve failed source snapshot and draws."
+  }
+}

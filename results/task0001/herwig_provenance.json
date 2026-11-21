@@ -1,0 +1,29 @@
+{
+  "access_right": "open",
+  "api_url": "https://zenodo.org/api/records/3066475",
+  "creators": [
+    "Pathak, Aditya",
+    "Komiske, Patrick",
+    "Metodiev, Eric",
+    "Schwartz, Matthew"
+  ],
+  "doi": "10.5281/zenodo.3066475",
+  "download_and_hash_seconds": 0.164,
+  "download_url": "https://zenodo.org/api/records/3066475/files/QG_jets_herwig_0.npz/content",
+  "expected_rows": 100000,
+  "filename": "QG_jets_herwig_0.npz",
+  "generator": "herwig",
+  "license": {
+    "id": "cc-by-4.0"
+  },
+  "md5_verified": true,
+  "published_md5": "a9de310c35c5a83ea592ef93070ff2f3",
+  "record_id": "3066475",
+  "record_url": "https://zenodo.org/records/3066475",
+  "record_version": "v1",
+  "role": "target",
+  "sha256": "0527349778c0ab2f7da268975fb9e7c0705c88d60f2c478401d941b9913f4d44",
+  "size_bytes": 100988182,
+  "title": "Herwig7.1 Quark and Gluon Jets",
+  "verified_utc": "2026-11-04T07:51:56.018606+00:00"
+}

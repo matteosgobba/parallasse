@@ -1,0 +1,3 @@
+# Optional six-page report assembly, separate from the scientific environment.
+reportlab==4.4.9
+pypdf==6.21.4

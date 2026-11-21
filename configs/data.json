@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "protocol_version": "0.2-data",
+  "with_bc": false,
+  "split_seed": 20261104,
+  "source_fractions": {"train": 0.6, "tune": 0.1, "calibration": 0.1, "test": 0.2},
+  "cohort_policy": "deduplicate_within_generator_keep_lowest_row; exclude_target_overlap",
+  "files": [
+    {
+      "role": "source",
+      "generator": "pythia",
+      "record_id": "3164691",
+      "record_version": "v1",
+      "filename": "QG_jets.npz",
+      "published_md5": "f5d052f10a79c6e8b9382637aca0ef52",
+      "expected_rows": 100000
+    },
+    {
+      "role": "target",
+      "generator": "herwig",
+      "record_id": "3066475",
+      "record_version": "v1",
+      "filename": "QG_jets_herwig_0.npz",
+      "published_md5": "a9de310c35c5a83ea592ef93070ff2f3",
+      "expected_rows": 100000
+    }
+  ]
+}

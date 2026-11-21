@@ -1,0 +1,26 @@
+{
+  "configuration": "configs/template_validation_revision.json",
+  "configuration_sha256": "f6c3418d01ad7e9ad280c66aca2f171016fecd4b68e5d7872c4e6981d83f87b9",
+  "frozen_utc": "2026-11-15T18:36:25.134083+00:00",
+  "implementation_required": true,
+  "input_sha256": {
+    "artifacts/task0013/20261115-template-validation-01/pythia_template_scores.npz": "876e5ff5dc5e529c2b96329987202906bc54fb5910866a4324f7bbedfd781169",
+    "results/task0011/20261113-template-reservation-01/protocol.json": "f5489347fb54041594070a984d1addf04e1dc425bdfda885591affbc196c8380",
+    "results/task0012/20261115-template-engine-02/executable_freeze.json": "ea77f8c4d5852cda7dc17e18860a8b6aa5bf3eff112c54d6b932c4330d4ed67e",
+    "results/task0013/20261115-template-validation-01/run.json": "7e24904c74a42ea0f2671c6e02e2daca0b4c915d9b73d810f751b59d2f05749b",
+    "results/task0013/20261115-template-validation-01/source_cutoffs.json": "f383c75f0ac739445ae03a5e26c133bcad33607801c1410a71d15359ec7b711e",
+    "results/task0013/20261115-template-validation-01/source_gate.json": "900032011157c2db5278857cc0bf2a2c70123da14bae276f78146a4739501ad0"
+  },
+  "new_validation_streams_drawn": false,
+  "protocol_version": "0.10-score-template-validation-design",
+  "scoring_or_stage_access_granted": false,
+  "source_files_sha256": {
+    "configs/template_validation_revision.json": "f6c3418d01ad7e9ad280c66aca2f171016fecd4b68e5d7872c4e6981d83f87b9",
+    "pyproject.toml": "6578b2a96837987c84e8a8d94d42f2780f222fa8998992e18593db3aef3d3f10",
+    "requirements-lock.txt": "1776caaea8276333b56808fabe44f2dea4adc86c72f60625f916cb5db899414e",
+    "scripts/review_template_validation.py": "efd340aa2208dadfefb734543415e3bcdbf133799d805951f4c53cab96cbfda8",
+    "src/parallasse/template_gate_review.py": "b273960c62fab94791f7c0dc98a48b487e52e5578691b80fe9a6df52a914ffe6",
+    "tests/test_template_gate_review.py": "a55564ca64c7651df0f828509ba7da684a365e15272110a5b42fb23cbf00a75f"
+  },
+  "state": "design_only_not_executable"
+}
