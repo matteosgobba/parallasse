@@ -2,9 +2,11 @@
   <img src="docs/assets/parallasse-logo.png" alt="Parallasse" width="680">
 </p>
 
-[![Python 3.12](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)](pyproject.toml)
-[![PyTorch](https://img.shields.io/badge/PyTorch-2.15.0-EE4C2C?logo=pytorch&logoColor=white)](requirements-lock.txt)
-[![XGBoost](https://img.shields.io/badge/XGBoost-3.4.1-2A5F8D)](requirements-lock.txt)
+<p align="center">
+  <a href="pyproject.toml"><img src="https://img.shields.io/badge/Python-3.12-3776AB?logo=python&amp;logoColor=white" alt="Python 3.12"></a>
+  <a href="requirements-lock.txt"><img src="https://img.shields.io/badge/PyTorch-2.15.0-EE4C2C?logo=pytorch&amp;logoColor=white" alt="PyTorch 2.15.0"></a>
+  <a href="requirements-lock.txt"><img src="https://img.shields.io/badge/XGBoost-3.4.1-2A5F8D" alt="XGBoost 3.4.1"></a>
+</p>
 
 **Quark and gluon jet tagging and fraction inference under Monte Carlo generator shift.**
 
@@ -33,14 +35,10 @@ Means across three training seeds on 20,000 held-out Pythia jets and 100,000 Her
 
 ![Gluon and quark acceptance on Pythia and Herwig at the frozen Pythia thresholds](reports/figures/02_frozen_cut_acceptance.png)
 
-*Matplotlib export from the held-out classification results. [Python plotting script](scripts/render_figures.py).*
-
 - **Particle identity improved ranking and increased fraction bias.** Its AUC gain shrank from +0.0122 on Pythia to +0.0018 on Herwig. On independent Herwig records with a 50% quark fraction and 10,000 jets, PFN-ID increased absolute expected fraction bias by **3.96 percentage points** relative to PFN-K (paired descriptive 95% interval [3.52, 4.45]). The EFN missed its prespecified improvement criterion. See the [replication](results/task0008/20261111-replication-01/summary.json) and [EFN results](results/task0009/20261111-efn-02/summary.json).
 - **Simulation-aware templates improved coverage in the primary Herwig comparison.** At the same fraction and sample size, coverage ranged from **96.5% to 97.7%** over 1,000 pseudoexperiments per checkpoint across six frozen PFNs. Both comparators had zero observed hits per checkpoint. Median interval spans ranged from **5.16 to 5.47 percentage points**. Secondary conditional coverage fell to 90.9% on Pythia and 91.0% on Herwig. These results apply to the studied particle-level simulations and declared generator family. [Full evaluation grid](results/task0014/20261116-template-evaluation-01/metrics.csv)
 
 ![Herwig primary comparison of coverage, fraction bias, and interval span across the six frozen PFNs](reports/figures/08_template_primary.png)
-
-*Matplotlib export from the primary Herwig pseudoexperiment results. [Python plotting script](scripts/render_template_figures.py).*
 
 ## Quick start
 
