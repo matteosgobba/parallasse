@@ -17,6 +17,7 @@ htmlcov/
 /AGENTS.md
 /PROJECT_MEMORY.md
 /parallasse_report/
+/generated_images/
 .env
 .env.*
 
